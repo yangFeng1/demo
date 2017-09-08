@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+  img{
+    width: 300px;
+    height: 300px;
+  }
+</style>
+<body>
+    <div>
+      <img src="img/Desert.jpg" alt="" id="img">
+    </div>
+    <div id="view">
+      
+    </div>
+</body>
+</html>
+<script>
+var ImgFileGet_class = function(msg){
+
+    this.fileSelector = msg.fileSelector;  //file-input的选择器
+    this.preViewImgSelector = msg.preViewImgSelector;  //图片预览选择器
+    this.max_size = msg.max_size || false;  //图片最大大小，不设为无限度
+    this.ajaxInterace = msg.ajaxInterace; //ajax上传图片插件
+
+    var _this = this;
+
+    $(this.fileSelector).change(function(){
+        var reader = new FileReader();
+        var file = this.files[0];
+
+        reader.onload = function(e){
+          var com_rate = 1;
+
+          if((_this.max_size!==false) && (file.size>_this.max_size)){
+              com_rate =  _this.max_size/file.size;
+          }
+
+          _this.compressImg(e.target.result,com_rate,function(src_data){
+
+              _this.preViewImgSelector && $(_this.preViewImgSelector).attr('src',src_data);
+
+              if(_this.ajaxInterace){
+                _this.ajaxInterace(src_data);
+              }
+          });
+
+        }
+        reader.readAsDataURL(file);
+    });
+
+    this.compressImg = function(imgData,com_rate,onCompress){
+          if(!imgData)return;
+          onCompress = onCompress || function(){};
+          com_rate = com_rate || 1;//压缩比率默认为1
+
+          var img = new Image();
+          img.onload = function(){ 
+
+              if(com_rate!=1) {//按最大高度等比缩放
+                var rate = Math.sqrt(com_rate);
+                img.width  *= rate; 
+                img.height *= rate; 
+              }
+
+              var canvas = document.createElement('canvas');
+              var ctx = canvas.getContext("2d"); 
+              canvas.width =  img.width; 
+              canvas.height = img.height; 
+              //ctx.drawImage(img, 0, 0);
+              ctx.clearRect(0, 0, canvas.width, canvas.height); // canvas清屏
+              //重置canvans宽高 canvas.width = img.width; canvas.height = img.height;
+              ctx.drawImage(img, 0, 0, img.width, img.height); // 将图像绘制到canvas上 
+              onCompress(canvas.toDataURL("image/jpeg"));//必须等压缩完才读取canvas值，否则canvas内容是黑帆布
+          };
+
+         //记住必须先绑定事件，才能设置src属性，否则img没内容可以画到canvas
+        img.src = imgData;
+    }
+}
+var ImgFileGet = new ImgFileGet_class({
+  fileSelector:"#img",  //fileInput选择器
+  preViewImgSelector:"#view",  //预览图片
+  max_size:200*1024,
+  ajaxInterace:function(src_data){
+
+    var cont_index = src_data.indexOf("base64,")+7;  //base64编码的图片，类型为jpeg
+
+    var send_msg = {};
+    send_msg.content = src_data.substring(cont_index);
+    $.ajax({
+              url:'http://.../save_data.php',
+              type:'POST',
+              data: send_msg,
+              success:function(ret){
+
+
+              }
+    },'json');
+  }
+});
+</script>

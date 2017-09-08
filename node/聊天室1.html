@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    ul{
+        height: 400px;
+        overflow: visible;
+    }
+    .view{
+       width: 500px;
+       height: 500px;
+       overflow: visible;
+       margin: 100px auto;
+       border: 1px solid red
+    }
+    ul li {
+         text-decoration: none;
+         list-style: none
+    }
+    button{
+        margin:0 auto;
+    }
+    .one{
+        text-align: left;
+    }
+    .tow{
+        text-align:  right;
+    }
+    input{
+        width: 150px;
+        height: 30px;
+        margin-left: 100px
+    }
+    button{
+        width: 100px;
+        height: 32px;
+    }
+</style>
+</head>
+
+<body>
+    <div class="view">
+         <ul id="message"></ul>
+    <input type="text" class="send"><button>发送</button>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script>
+      socket = io.connect('ws://127.0.0.1:3000');
+    $('button').on('click',function(){
+        var string = $('.send').val()
+        console.log(string)
+        var html = '<li><p class="one">'+string+'</p></li>'
+        socket.emit("message", {"msg" :html});
+        $('.send').val('')
+        
+    })
+   socket.on("message", function(obj) { 
+           
+            console.log(obj)
+            $('#message').append(obj.msg)
+            
+        });
+      
+       
+        
+    </script>
+</body>
+</html>

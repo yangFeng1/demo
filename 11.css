@@ -1,0 +1,150 @@
+.modalBg{
+  width:100%;
+  height:100%;
+  background-color:rgba(0,0,0,0.5);
+  position:fixed;
+  left:0;
+  top:0;
+  z-index:9999;
+  display:none;
+}
+.modalWin{
+  width:398px;
+  position:absolute;  
+  left:50%;
+  margin-left:-199px;
+  display:none;
+}
+.modalMsg{
+  width:250px;
+  height:150px;
+  position:absolute;  
+  left:50%;
+  top:50%;
+  margin-left:-125px;
+  margin-top:-75px;
+  display:none;
+}
+.tipImg,.keyImg,.addImg{
+  display:none;
+}
+.tipModal{
+  top:33%;
+}
+.basicModal{
+  top:40%;
+}
+.tipModal .tipImg{
+  display:block;
+}
+.addModal{
+  top:15%;
+}
+.addModal .modalBody{
+  padding-top:30px;
+}
+.addModal .addImg{
+  display:block;
+}
+.editModal{
+  top:25%;
+}
+.editModal .keyImg{
+  display:block;
+}
+
+.modalHead{
+  height:40px;
+  width:398px;
+  background-image: url("../images/myModalHead.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: 100% 40px;
+  background-size: 100% 40px;
+}
+.modalMsg .modalHead{
+  width:250px;
+}
+.modalHead .modalTitle{
+  height:40px;
+  width:398px;
+  line-height:40px;
+  text-align:center;
+  font-size:15px;
+  color:#fff;
+}
+.modalMsg .modalHead .modalTitle{
+  width:250px;
+  text-align:left;
+  padding-left:35px;
+  line-height:35px;
+}
+.modalHead .closeBtn{
+  width:30px;
+  height:30px;
+  position:absolute;
+  right:9px;
+  top:5px;
+  background-image: url("../images/userIcons.png");
+  background-repeat:no-repeat;
+  background-position: -35px -535px;
+  cursor:pointer;
+}
+.modalHead .closeBtn:hover{
+  background-position: -135px -535px;
+}
+.modalFoot{
+  -webkit-background-size: 100% 14px;
+  background-size: 100% 14px;
+  height:14px;
+  background-image: url("../images/myModalFoot.png");
+  background-repeat: no-repeat;
+}
+.modalBody{
+  background-image: url("../images/myModalBg.png");
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  background-repeat: repeat-y;
+  padding:10px 4px 0px;
+  position:relative;
+  margin-top:-4px;
+}
+.modalMsg .modalBody{
+  height:95px;
+}
+.modalBody .msgContent{
+  width:250px;
+  height:52px;
+  line-height:38px;
+  text-align:center;
+  font-size:14px;
+  color:#333;
+}
+.modalBody .confirmBtn{
+  position:absolute;
+  left:50px;
+  top:52px;
+}
+.modalBody .leaveBtn{
+  position:absolute;
+  left:140px;
+  top:52px;
+}
+
+.leaveBtn .btnBg{
+  background-position: 0 -259px;
+}
+.leaveBtn .btnBg:before{
+  background-position: -16px -259px;
+}
+.leaveBtn .btnBg:after{
+  background-position: -116px -259px;
+}
+.leaveBtn:hover .btnBg:hover{
+  background-position: 0 -309px;
+}
+.leaveBtn:hover .btnBg:before{
+  background-position: -16px -309px;
+}
+.leaveBtn:hover .btnBg:after{
+  background-position: -116px -309px;
+}

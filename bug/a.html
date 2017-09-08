@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+   function($) {
+    return {
+        ajax: function(type, url, data, beforeSend,callback) {
+            $[type]('/api/' + url, data,beforeSend, function(res) {
+                if (res.code != 200) throw new Error(res.msg);
+                callback && callback(res);
+            })
+        },
+        get: function(url, data,beforeSend, callback) {
+            this.ajax('get', url, data,beforeSend, callback);
+        },
+        post: function(url, data,beforeSend, callback) {
+            this.ajax('post', url, data, beforeSend,callback);
+        }
+    }
+};
+</script>

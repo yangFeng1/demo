@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+    var pcol;
+   var u =  "http://172.16.1.36/directed_src/directed.html"
+
+  if (u.substring(0, 5) == "https") {
+    pcol = "wss://";
+    u = u.substr(8);
+  } else {
+    pcol = "ws://";
+    if (u.substring(0, 4) == "http")
+      u = u.substr(7);
+  }
+
+  u = u.split('/');
+
+  /* + "/xxx" bit is for IE10 workaround */
+
+  console.log(pcol + u[0] + ":7681") ;
+</script>

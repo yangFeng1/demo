@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#view{
+			width: 600px;
+			height: 600px;
+			margin: 200px auto;
+			background: url(img/Desert.jpg);
+			
+		}
+		img{
+			width: 300px;
+			height: 300px;
+		}
+		button{
+			width: 60px;
+			height: 20px;
+		}
+	</style>
+	<body>
+		<div id="view">
+			
+		</div>
+
+		<div id="img">
+			
+		</div>
+		<button></button>
+	</body>
+</html>
+<script type="text/javascript" src="dist/html2canvas.js"></script>
+<script type="text/javascript">
+   var a =  document.getElementById('view')
+   document.getElementsByTagName('button')[0].onclick = function(){
+   		html2canvas(document.getElementById('view'),{
+//			
+					 onrendered: function(canvas) {
+			            document.body.appendChild(canvas);
+			            var image = canvas.toDataURL("image/png");
+			           var pHtml = "<img src="+image+" />";  
+			           document.getElementById('img').innerHTML = pHtml
+        },
+         width: 1000,
+      height: 1000
+				})
+   }
+   a.onclick = function(){
+   	 var div = document.createElement("span")
+   	 div.style.display = 'block'
+   	div.style.width = '200px'
+   	div.style.height = '200px'
+   	div.style.background = 'rgba(0,0,0,0.1)'
+   	this.appendChild(div)
+   }
+	
+	
+	
+	
+</script>

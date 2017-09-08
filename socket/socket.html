@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script src='sdManage.js '></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  ws_init()
+  function ws_init()
+{    
+        var socket_di;
+        socket_di = new WebSocket('ws://172.16.1.36:7681/xxx',"dumb-increment-protocol");
+
+        try {
+        socket_di.onopen = function() {
+          console.log('链接成功')
+        } 
+
+        socket_di.onmessage =function got_packet(msg) {
+          //console.log(msg)
+        if( msg.data.indexOf("recordTopic") >= 0 )
+        {
+            record_area_times = record_area_update + 20;  
+            parse_recordTopic(msg.data);
+        }else
+        if( msg.data.indexOf("liveTopic") >= 0 )
+        {   
+                live_area_updata = 3;
+                live_time_updata = 0;
+        }else
+        if( msg.data.indexOf("subTitleAndLogoTopic") >= 0 )
+        {
+             subtitle_logo_area_update = 3;
+        }else
+        if( msg.data.indexOf("filmViewTopic") >= 0 )
+        {
+             film_view_area_updata = 3;
+        }else
+              if( msg.data.indexOf("audioCtrlTopic") >= 0 )
+        {
+               get_audio_vol = 3;  
+        }else
+       if( msg.data.indexOf("ptzManageTopic") >= 0 )
+        {
+                ptz_mode_update = 3;
+        }else
+        if( msg.data.indexOf("chnSynTopic") >= 0 )
+        {
+                chn_name_updata = 3;
+        }else
+         if( msg.data.indexOf("sysTimeTopic") >= 0 )
+        {
+                var topics = new Array();
+                return
+                topics = msg.data.split(";");
+                for( i=0; i<topics.length; i++ ) 
+                { 
+                if(topics[i].indexOf("sysTimeTopic") >= 0)
+                {
+                parse_sysTimeTopic(topics[i]);
+                }
+                if(topics[i].indexOf("recordTimeTopic") >= 0)
+                {
+                parse_recordTimeTopic(topics[i]);
+                }
+                if(topics[i].indexOf("liveTimeTopic") >= 0)
+                {
+                parse_liveTimeTopic(topics[i]);
+                }
+                if(topics[i].indexOf("diskSizeTopic") >= 0)
+                {
+                parse_diskSizeTopic(topics[i]);
+                }
+                if(topics[i].indexOf("recordBaseInfoTopic") >= 0)
+                {
+                parse_recordBaseInfoTopic(topics[i]);
+                }
+                } 
+        }
+        } 
+                
+        socket_di.onclose = function(){}
+        } catch(exception) {
+        alert('<p>Error' + exception);  
+        }
+}
+</script>

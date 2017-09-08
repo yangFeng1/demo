@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#view{
+			width: 200px;
+			height: 200px;
+			margin: 200px auto;
+			background: skyblue;
+			position: relative;
+		}
+		img{
+			width: 300px;
+			height: 300px;
+		}
+		button{
+			width: 60px;
+			height: 20px;
+		}
+		p{
+			position: absolute;
+			top: 50px;
+		}
+	</style>
+	<body>
+		<div id="view">
+			<div>
+				<div>
+					<idv>
+						<p>10156115</p>
+			<img src="img/Desert.jpg" alt="" />
+					</idv>
+				</div>
+			</div>
+		</div>
+		<div id="img">
+			
+		</div>
+		
+	</body>
+</html>
+ <!--[if IE]>
+ <script src="https://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+<script src='兼容问题/excanvas.js'></script>
+ <![endif]-->
+<script type="text/javascript" src="dist/html2canvas.js"></script>
+<script src="dist/Canvas2Image.js"></script>
+<script type="text/javascript">
+
+//	var w = document.getElementById('view').offsetWidth*2
+//	var h = document.getElementById('view').offsetHeight*2;//要将 canvas 的宽高设置成容器宽高的 2 倍  
+	 
+//	  var canvas = document.createElement("canvas"); 
+//      canvas.width = w * 2;  
+//	    canvas.height = h * 2;  
+//	    canvas.style.width = w + "px";  
+//	    canvas.style.height = h + "px";  
+//	var context = canvas.getContext("2d");//然后将画布缩放，将图像放大两倍画到画布上  
+//	    context.scale(2,2); 
+var canvas = document.createElement("canvas"); //创建一个canvas节点
+var width = document.getElementById('view').offsetWidth; //获取dom 宽度
+var height = document.getElementById('view').offsetHeight; //获取dom 高度
+var scale = 2; //定义任意放大倍数 支持小数
+//	html2canvas(document.getElementById('view'),{
+////					 canvas: canvas,
+//							scale:scale, // 添加的scale 参数
+//						   
+//						 
+////						    width:width, //dom 原始宽度
+////						    height:height, //dom 原始高度
+//							onrendered: function(canvas) {
+//						   
+//			            document.body.appendChild(canvas);
+//			            var image = canvas.toDataURL("image/png");
+//			            var pHtml = "<img src="+image+" />";  
+//     					document.getElementById('img').innerHTML = pHtml
+//			     }
+//				})
+	html2canvas(document.getElementById('view'), {
+		 scale:scale, // 添加的scale 参数
+	   
+	   canvas:canvas,
+	    width:width, //dom 原始宽度
+	    height:height //dom 原始高度
+	}).then(function (canvas) {
+     document.body.appendChild(canvas);
+     					 var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+	    				console.log(img);
+			            var image = canvas.toDataURL("image/png");
+			            var pHtml = "<img src="+image+" />";  
+       					document.getElementById('img').append(img)
+});
+</script>

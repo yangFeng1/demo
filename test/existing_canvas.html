@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Using an existing canvas to draw on</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        button {
+            clear: both;
+            display: block;
+        }
+        #content {
+            background: rgba(100, 255, 255, 0.5);
+            padding: 50px 10px;
+        }
+    </style>
+</head>
+<body>
+<div><h1>HTML content to render:</h1>
+    <div id="content">Render the content in this element <strong>only</strong> onto the existing canvas element</div>
+</div>
+<h1>Existing canvas:</h1>
+<canvas width="500" height="200"></canvas>
+<script type="text/javascript" src="dist/html2canvas.js"></script>
+<button>Run html2canvas</button>
+<script type="text/javascript">
+    var canvas = document.querySelector("canvas");
+    var width = document.getElementById('content').offsetWidth; //获取dom 宽度
+	var height = document.getElementById('content').offsetHeight; //获取dom 高度
+	var scale = 1; //定义任意放大倍数 支持小数
+    var ctx = canvas.getContext("2d");
+	
+
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+    document.querySelector("button").addEventListener("click", function() {
+        html2canvas(document.querySelector("#content"), {
+        	canvas: canvas,
+        	  scale:scale, // 添加的scale 参数
+	   		 width:width, //dom 原始宽度
+			    height:height, //dom 原始高度        
+			    onrendered:function(){
+			    	
+			    }
+        });
+    }, false);
+
+</script>
+</body>
+</html>
