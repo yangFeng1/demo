@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+/*var x = 1;
+var y = 2;
+  var a
+  function aaa(){
+      a =  (x,y) => {
+    x++;
+    y--;
+    console.log(this)//window
+    return x+y
+  }
+  }
+ aaa()
+  a(x,y)*/
+var a ;
+var obj = {
+  aa:function(){
+      a = (x,y) => {
+        console.log(this)
+      }
+  }
+}
+obj.aa()
+a()//aa
+//在箭头函数中，函数体内的 this 对象，就是定义时所在的对象，而不是在调用时的对象。
+
+/*因为箭头函数内部没有自己的 this 对象，它的 this 对象继承外面的，因此内部的 this 就是外层代码块的 this。*/
+</script>

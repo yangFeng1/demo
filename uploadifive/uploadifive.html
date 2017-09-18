@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>注册</title>
+<link rel="stylesheet" type="text/css" href="uploadiFive/uploadifive.css" />
+<script src='../js/jquery.min.js'></script>
+<script src="uploadiFive/jquery.uploadifive.min.js"></script>
+
+</head>
+
+<body>
+            <form class="cd-form" id="subForm"
+                action="openaccount" method="post">
+                    <div id="cd-signup">
+                        <p class="fieldset">
+                            <label class="image-replace cd-photo1" for="signup-idimage1"></label>
+                            <input class="full-width has-padding has-border"
+                                id="signup-idimage1" type="file" name="upload">
+                            <input type="hidden" name="frontSide" id="frontSide">
+                        <div id="tip-queue1"></div>
+                        </p>
+                        </p>
+                        <p class="fieldset">
+                            <input class="full-width2" id="submit" type="submit" value="提交">
+                        </p>
+            </form>
+</body>
+</html>
+
+<script src='uploadifive/jquery.uploadifive.min.js'></script>
+
+<script>
+  $(function() {
+    $('#signup-idimage1').uploadifive({
+        'auto' : true,
+        'uploadScript' : 'photo.php',
+        'fileObjName' : 'upload',
+        'buttonText' : '上传照片',
+        'queueID' : 'tip-queue1',
+        'fileType' : 'image/*',
+        'multi' : false,
+        'fileSizeLimit'   : 5242880,
+        'uploadLimit' : 1,
+        'queueSizeLimit'  : 1,   
+        'onUploadComplete' : function(file, data) {
+          alert('成功了')
+            var obj = JSON.parse(data);
+            if (obj.img == "500") {
+                alert("系统异常！");
+            } else {
+                $("#frontSide").val(obj.img);
+                document.getElementById("submit").disabled = false;
+            }
+        },
+        onCancel : function(file) {
+           $("#frontSide").val("");
+            /* 注意：取消后应重新设置uploadLimit */
+            $data    = $(this).data('uploadifive'),
+            settings = $data.settings;
+            settings.uploadLimit++;
+            alert(file.name + " 已取消上传~!");
+        },
+        onFallback : function() {
+            alert("该浏览器无法使用!");
+        },
+        onUpload : function(file) {
+          console.log('上传中')
+            document.getElementById("submit").disabled = true;//当开始上传文件，要防止上传未完成而表单被提交
+        },
+    });
+});
+</script>

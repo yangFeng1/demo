@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  //错误原因
+  //首先你define  返回了一个对象（比如a）
+  var a = {
+    getListData:function(){},
+    maAjax:function(){
+      amdApi.ajax(function(){
+        getListData()//在这里调用函数（首先他会在该函数内找，没有找到，然后去全局作用域找，全局也没有定义过该函数，然后报错 not defined）
+      })
+      
+    }
+  }
+
+  //解决方法
+  //这个函数是定义在a对象的getListData属性上面
+  //要调用该函数就要找到a对象的getListData属性
+   var a = {
+    getListData:function(){},
+    maAjax:function(){
+      var _this = this//当前this指向的就是a对象，将他赋值给_this
+      amdApi.ajax(function(){
+        _this.getListData()//现在_this代表a对象，然后调用a对象getListData的函数
+      })
+      
+    }
+  }
+</script>

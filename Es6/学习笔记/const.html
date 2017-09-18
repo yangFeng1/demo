@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  //const声明一个只读的常量。一旦声明，常量的值就不能改变。const一旦声明变量，就必须立即初始化，不能留到以后赋值
+ /* const a = 2
+  a = 3// Assignment to constant variable.
+  console.log(a)*/
+  
+
+
+  //对于复合类型的变量，变量名不指向数据，而是指向数据所在的地址。const命令只是保证变量名指向的地址不变，并不保证该地址的数据不变
+  
+  const foo = {};
+  foo.prop = 123
+
+  console.log(foo.prop)//123
+  foo = {}// Assignment to constant variable. 更改地址时会报错，
+</script>

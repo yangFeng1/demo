@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/jBootsrapPage.css">
 </head>
+<style>
+  .pagination{
+    margin:200px auto;
+  }
+</style>
 <body>
   <div>
     <ul class="pagination"></ul>
   </div>
 </body>
 </html>
-
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-
-
+<script src='../js/jquery.min.js'></script>
 <script src='../js/jBootstrapPage.js'></script>
 <script>
-      createPage(10, 13, 150);
+      createPage(10,6,700);
 
     function createPage(pageSize, buttons, total) {
         $('body').find(".pagination").jBootstrapPage({
@@ -25,7 +28,8 @@
             total : total,
             maxPageButton:buttons,
             onPageClicked: function(obj, pageIndex) {
-               
+               console.log(obj)
+               console.log(pageIndex)
             }
         });
     }

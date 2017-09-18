@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+//扩展操作符，它通过遍历旧数组返回一个新数组，使旧的数组保持原样
+  /*  var arr = [1,2,3,4,5,6,7]
+    var string = 'aaa'
+    var stringB = 'bbb'
+    console.log([...arr,string,stringB])//[1, 2, 3, 4, 5, 6, 7, "aaa", "bbb"]
+    console.log([...arr,string,...stringB])//[1, 2, 3, 4, 5, 6, 7, "aaa", "b", "b", "b"]*/
+
+
+    var arr = [1,2,3,4,5,6,7]
+    var string = [5,6,7,9]
+    var stringB = 'bbb'
+     console.log([...arr,stringB,...string])
+     console.log([...arr,string,stringB])
+</script>

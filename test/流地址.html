@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+<title>RTSPClient测试</title>
+<style>
+body
+{
+    background: "#E5E5E5";
+  font-family: "verdana", "arial", "helvetica";
+  font-size: "10pt";
+}
+td
+{
+  font-family: "verdana", "arial", "helvetica";
+  font-size: "9pt";
+}
+td.local
+{
+    background: #336699;
+  background-color: #003366;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border: 1px double #009acd;
+  margin: 1px;
+  padding: 1px;
+  color: #99ff99;
+  font-family: "宋体", courier, "courier new";
+  font-size: "10pt";
+  text-shadow: 0px 0px 20px yellow, 0px 0px 10px orange, red 5px -5px;
+}
+.bt
+{
+  font-size: 9pt;
+  background-color: #eeeeee;
+  font-family: "verdana", "arial", "helvetica";
+}
+.button {
+  BORDER-RIGHT: #a2a2a2 1px solid; BORDER-TOP: #ffffff 1px solid; FONT-SIZE: 12px; BACKGROUND: #cccccc; BORDER-LEFT: #ffffff 1px solid; COLOR: #333333; PADDING-TOP: 3px; BORDER-BOTTOM: #a2a2a2 1px solid; HEIGHT: 21px; cursor: hand;
+}
+.button1 {
+  BORDER-RIGHT: #af6700 1px solid; BORDER-TOP: #ffd16e 1px solid; FONT-SIZE: 12px; BACKGROUND: #ff9600; BORDER-LEFT: #ffd16e 1px solid; COLOR: #964700; PADDING-TOP: 3px; BORDER-BOTTOM: #af6700 1px solid; HEIGHT: 21px; cursor: hand;
+}
+.button2 {
+  BORDER-RIGHT: #ae0c0c 1px solid; BORDER-TOP: #fc7070 1px solid; FONT-SIZE: 12px; BACKGROUND: #ee3e3e; BORDER-LEFT: #fc7070 1px solid; COLOR: #ffefef; PADDING-TOP: 2px; BORDER-BOTTOM: #ae0c0c 1px solid; HEIGHT: 21px; cursor: hand;
+}
+.screenFull{
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1000;
+  border:none;
+  padding:0;
+  margin:0;
+}
+</style>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script language="JavaScript">
+<!--
+//select value equal numbers of camera. hidden's value is the imgs' status(on/off?).
+  function Camera0()
+        {
+            return document.getElementById('Camera0');
+        }
+        Camera = Camera0;
+  
+  function addEvent(obj, name, func)
+        {
+            if (obj.attachEvent) {
+                obj.attachEvent("on"+name, func);
+            } else {
+                obj.addEventListener(name, func, false); 
+            }
+        }
+
+    function CameraLoaded() {
+             addEvent(Camera(), 'DoubleClick', function(url,uuid){
+                 console.log(url+uuid);
+            });
+        }
+function switchctrl(b)
+{
+    if(b>0)
+  {
+    var rtsp = document.all.ip.value
+    var username    = document.all.usr.value;//user account;
+    var password    = document.all.pwd.value;//pwd;
+    var Protocol    = document.getElementById("Protocol"); 
+    console.log(rtsp)
+    console.log(Protocol.selectedIndex)
+    Camera().CloseChannel();
+    Camera().OpenChannel(rtsp,Protocol.selectedIndex,545,' ',' ');
+  }
+  else
+  {
+    Camera().CloseChannel();
+  }
+}
+
+function Getvolume()
+{
+  var nvolume = Camera().GetVolume();
+  document.getElementById("volume").value = nvolume;
+}
+
+function Setvolume()
+{
+  var nvolume = document.all.volume.value;
+  Camera().SetVolume(nvolume);
+}
+
+function confwinH(x) {
+  var BodyW = $(window).width(); //窗口宽度
+  $("body").css({
+    "width": BodyW + "px"
+  })
+  if(x < 600) {
+    x = 600;
+  }
+  var dH = x - 280;
+  $(".index-pic-box").css({
+    "height": dH + "px",
+    "width": 100 + "%"
+  })
+  $(".direct-pic").css({
+    "top": dH + "px"
+  })
+  var scale = parseInt((dH - 30) / 9);;
+  $(".index-pic-winds").css({
+    "width": scale * 16 + 14 + "px",
+    "height": scale * 9 + 14 + "px"
+  })
+  var direct_control_box = (BodyW / 2 - 300) * 2;
+  if(direct_control_box < 1060) {
+    direct_control_box = 1060;
+  }
+}
+function klWebPlayerMouseDoubleClick(id,x,y)
+{
+  
+  if (id == 0)
+  {
+//    if(window.location.href.indexOf("VideoFullScreen.html") >= 0)
+    if($(".index-pic-winds").hasClass("ScreenFull") )
+    {
+      var directboxh = $(window).height();
+        confwinH(directboxh);
+      $('.index-pic-winds').removeClass('ScreenFull');
+      $('.index-pic-winds').css({
+        'border': 'solid 6px black'
+      });
+    }
+    else
+    {
+//      window.location.href = "VideoFullScreen.html";
+      e = jQuery.Event("keypress");
+      e.which = 122; //enter key
+      jQuery('document').trigger(e);
+
+      $('.index-pic-winds').addClass('ScreenFull');
+      $('.ScreenFull').css({
+        width: $(window).width(),
+        height: $(window).height()
+      });
+      $('.index-pic-winds').css({
+        'border': 'none'
+      });
+    }
+    
+  }
+  else
+  {
+    if ($('.Manual').hasClass("sel"))
+      switch_resourc_win(id);
+  }
+}
+$("document").on("dblclick",function(){
+  alert("123");
+  klWebPlayerMouseDoubleClick(0,x,y);
+})
+
+//-->
+</script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div align="center"> 
+  <table width="100%">
+    <tr> 
+      <td><div align="center"><table border="1">
+          <tr>
+            <td class="index-pic-winds ScreenFull">
+      <object id="Camera0" type="application/x-rtspplayer" width="640" height="480">
+      <!-- client -->
+       <param name="onload" value="CameraLoaded" />
+      </object>
+    </td>
+          </tr>
+        </table>
+        </div></td>
+    </tr>
+    <tr> 
+      <td height="44"> 
+        <div align="center"> RTSP地址: 
+       <input type="text" id="ip" name="ip" class="bt" value="rtsp://172.16.10.21:1554/sd_stream0" size="32">
+          用户名： 
+       <input type="text" id="usr" name="usr" value="admin" class="bt" size="11" maxlength="16">
+          密码：
+       <input type="text" id="pwd" name="pwd" value="admin" size="11" class="bt" maxlength="16">
+       <select id="Protocol">
+        <option value ="TCPProtocol">TCP</option>
+        <option value ="UDPProtocol">UDP</option>
+      </select>
+
+
+      <input type="text" id="volume" name="volume" value="80" size="11" class="bt" maxlength="16">
+      <input type="button" id="Getvol" name="Submit" value="获取音频" class="button1" onclick="Getvolume()">
+      <input type="button" id="Setvol" name="Submit" value="设置音频" class="button1" onclick="Setvolume()" >
+
+         
+        </div>
+    </td>
+    </tr>
+
+
+  <tr>
+    <td height="44"> 
+      <div align="center"> 
+        <input type="button" id="start" name="Submit" value="启动图像" class="button1" onclick="switchctrl(1)">
+        <input type="button" id="stop" name="Submit" value="停止图像" class="button1" onclick="switchctrl(0)" >
+        <input type="button" class="btn" value="rtsp://172.16.1.116:1554/sd_stream0"/>
+        <input type="button" class="btn" value="rtsp://172.16.1.116:2554/sd_stream1"/>
+        <input type="button" class="btn" value="rtsp://172.16.1.116:3554/sd_stream2"/>
+        <input type="button" class="btn" value="rtsp://172.16.1.116:4554/sd_stream3"/>
+        <input type="button" class="btn" value="rtsp://172.16.1.116:5554/sd_stream4"/>
+       </div>
+    </td>
+  </tr>
+
+     
+  </table>
+</div>
+</body>
+</html>
+<script>
+  $('.btn').on('click',function(){
+    console.log($(this).val())
+  $('#ip').val($(this).val())
+  $('#start').click()
+})
+</script>

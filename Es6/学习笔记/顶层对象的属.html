@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  //顶层对象，在浏览器环境指的是window对象，在Node指的是global对象。 ES6规定，为了保持兼容性，var命令和function命令声明的全局变量，依旧是顶层对象的属性；另一方面规定，let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。也就是说，从ES6开始，全局变量将逐步与顶层对象的属性脱钩。
+  
+
+  var a = 1;
+  console.log(window.a)//1
+  let b = 1
+  console.log(window.b)//undefined
+</script>

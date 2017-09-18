@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  class Animal {
+    constructor(){
+      this.type = 'animal';
+    }
+    says(say){
+       console.log(this.type + ' says ' + say);
+    }
+  }
+  let animal = new Animal()
+  animal.says('hello');
+  class Cat extends Animal {
+    constructor(){
+      super();
+      this.type = 'cat'
+    }
+  }
+  let cat = new Cat()
+  cat.says('hello')
+  /**
+   * 上面代码首先定义了一个类，拥有一个默认的方法 constructor ，这是构造方法，constructor 内定义的方法和属性是实例对象自己的，外的是所有实例对象可以共享的。
+
+Class 之间通过 extends 继承，继承父类的所有属性和方法。
+
+super 指代父类的实例，也就是父类的 this 对象，子类必须在 constructor 方法类调用 super 方法，否则报错。因为子类没有自己的 this 对象，如果不调用，子类得不到 this 对象。
+
+Class 注意点：
+
+类的内部定义的方法，都是不可枚举的（和 ES5 不同）
+必须有 constructor 方法，没有显式定义，则默认添加空的 constructor 方法
+类的构造函数，必须使用 new 调用，普通构造函数不适用也可执行
+不存在变量提升
+类的方法内部，this 默认指向类的实例
+类的内部，默认是严格模式
+   */
+</script>

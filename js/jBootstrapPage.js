@@ -1,4 +1,4 @@
-(function($) {
+﻿(function($) {
     $.fn.jBootstrapPage= function(config) {
       //  if (this.size() != 1)
        //     $.error('请为这个插件提供一个唯一的编号');
@@ -85,6 +85,7 @@
             		for(var index = startPages; index <= endPages; index++) {
             			pNum++;
             			html += '<li class="page" pNum="'+pNum+'"><a href="#" page="'+index+'">'+index+'</a></li>';
+                      
             		}
             		
             		$this.find('li:nth-child(2)').before(html);
@@ -163,9 +164,11 @@
                     endPage -=1
                 }
                 var html = '';
+                var num = 1;
                     for(var index = pNum; index <=endPage; index++) {
                         pNum++;
-                        html += '<li class="page" pNum="'+pNum+'"><a href="#" page="'+index+'">'+index+'</a></li>';
+                        html += '<li class="page" pNum="'+num+'"><a href="#" page="'+index+'">'+index+'</a></li>';
+                        num +=1
                     }
                     $this.find('li.page').remove();
                     $this.find('li:nth-child(2)').before(html); 
@@ -231,7 +234,7 @@
             		var selectNum = parseInt($this.find('li.active').attr('pNum'))-1;
             		if(selectNum < 1) selectNum = 1;
             		
-            		mathPrePage(selectNum, selectedIndex, c.maxPages, c.maxPageButton);
+            		mathPrePage(selectNum, selectedIndex, c.maxPages, c.pageSize);
             		selectedBtn = $this.find('li.page').find('a[page="'+(selectedIndex)+'"]');
             	}else if($_this.hasClass("go")){
                     var selectedIndex = parseInt(selectedBtn.text())//当前的页码
@@ -247,7 +250,7 @@
                    if(inputVal > allPage){
                     return
                    }
-                  clickGo(selectedIndex,inputVal,allPage,c.pageSize)
+                  clickGo(selectedIndex,inputVal,allPage,c.maxPageButton)
                   selectedBtn = $this.find('li.page').find('a[page="'+inputVal+'"]');
                 }
             	else {
