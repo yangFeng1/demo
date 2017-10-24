@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+  .left{
+    width: 200px;
+    height: 500px;
+    margin: 100px;
+    margin-left: 400px;
+    border: 1px solid black; 
+    float: left;
+  }
+  option{
+    height: 30px;
+    cursor:pointer;
+    -webkit-appearance:none
+  }
+  select{
+    height: 100%;
+    width: 100px;
+
+  }
+ 
+  select:focus option:checked{
+ color: white;
+ background-image:linear-gradient(#fada00, #fada00)
+}
+       .right{
+    width: 200px;
+    height: 500px;
+    margin: 100px;
+    margin-left: 100px;
+    border: 1px solid black; 
+    float: left;
+  }
+  
+</style>
+<body>
+
+  <div class="left">
+  <button class="all">全选</button>
+  <input type="text" class="search">
+    <select multiple>
+      <option>111</option>
+      <option>22212</option>
+      <option>3433</option>
+      <option>4454</option>
+      <option>555</option>
+      <option>666</option>
+    </select>
+  
+  </div>
+  <div class="right">
+  <button class="del">清空</button>
+    <select name="" id="" multiple></select>
+  </div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+shifting('.left','.right','.all','.del','.search')
+  function shifting(left,right,all,del,search){
+    $(left).on('click','option',function(){//添加权限
+      if($(this).css('display') != 'none')  $(right).find('select').append($(this))
+     $(search).trigger('input')
+    })
+    $(right).on('click','option',function(){//删除权限
+       $(left).find('select').append($(this))
+       $(search).trigger('input')
+    })
+    $(all).on('click',function(){//全选
+        $(left).find('option').click()
+
+    })
+    $(del).on('click',function(){//清空
+     $(right).find('option').click()
+    
+    })
+    $(search).on('input',function(){//搜索
+      var value = $(this).val()
+      var flag = false//用来判断是否禁用全选
+      $(left).find('option').each(function(i,v){
+          if($(v).html().indexOf(value) == -1){
+            $(this).css('display','none')
+          }else{
+            $(this).css('display','block')
+            flag = true
+          }
+          
+      })
+      if(flag){
+              $(all).attr('disabled',false)
+          }else{
+              $(all).attr('disabled',true)
+          } 
+    })
+    
+  }
+  function getVal(select){
+    var val = []
+      $(select).find('option').each(function(i,v){
+          val[i] =Number($(this).val())
+      })
+      return val
+  }
+  console.log(getVal('.left'))
+</script>

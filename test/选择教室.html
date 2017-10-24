@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.css">
+<style>
+li{
+
+  list-style: none
+}
+  .content{
+  margin: 150px 0 0 200px;
+}
+.subject{
+
+}
+.subject span {
+  float:left;
+  margin-left: 90px;
+  font-size: 14px;
+  color: #555;
+
+}
+.subject ul {
+  float:left;
+  margin-left:29px
+}
+.subject ul li {
+  float: left;
+  margin-left:10px;
+  font-size: 14px;
+  color: #555;
+  cursor:pointer;
+  padding: 5px;
+  margin-top: -5px;
+}
+.subject ul  .active{
+  background: #3498DB;
+   color: #FFFFFF;
+
+}
+.content .form-horizontal .form-group {
+  margin: 0px;
+  padding: 0px;
+}
+
+</style>
+
+<body>
+  <div class="myBody">
+  <div class="content">
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">年段</label>
+    <ul class="grade">
+      <li>小学</li>
+      <li>初中</li>
+      <li>高中</li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">年级</label>
+    <select class="form-control grade">
+      <option>一年级</option>
+      <option>二年级</option>
+      <option>三年级</option>
+      <option >四年级</option>
+      <option >五年级</option>
+      <option >六年级</option>
+    </select>
+  </div>
+   <div class="subject form-group">
+       <span>科目</span>
+          <ul>
+            <li >语文</li>
+            <li>数学</li>
+            <li>英语</li>
+            <li>物理</li>
+            <li>化学</li>
+            <li>生物</li></br></br>
+            <li>计算机</li>
+            <li>地理</li>
+            <li>政治</li>
+            <li>音乐</li>
+          </ul>
+     </div></br>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button  class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</form>
+     
+    
+     </div>
+  </div>
+</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src='https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.js'></script>
+
+<script>
+  $('.subject').on('click','li',function(){//选择科目
+  if(!$(this).hasClass('active')){
+      $(this).addClass('active')
+  }else{
+      $(this).removeClass('active')
+
+  }
+})
+
+$('.yearPeriod').on('change',function(){//根据年段改变年级
+  if($(this).val() == '小学'){
+    $('.grade').html('<option>一年级</option>'+
+                      '<option>二年级</option>'+
+                      '<option>三年级</option>'+
+                      '<option>四年级</option>'+
+                      '<option>五年级</option>'+
+                      '<option>六年级</option>')
+  }else if($(this).val() == '初中'){
+    $('.grade').html('<option>初一</option>'+
+                      '<option>初二</option>'+
+                      '<option>初三</option>')
+  }else{
+    $('.grade').html('<option>高一</option>'+
+                      '<option>高二</option>'+
+                      '<option>高三</option>')
+  }
+})
+
+</script>

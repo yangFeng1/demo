@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+    <select name="" id="sel">
+      <option value="123">111</option>
+      <option value="32">222</option>
+      <option value="12">333</option>
+      <option value="32">444</option>
+    </select>
+    <button id="btn">aaaaa</button>
+</body>
+</html>
+<script>
+  var a = document.getElementById('sel')
+  console.log(a.value)
+  document.getElementById('btn').onclick = function(){
+    console.log(a.value)  
+  }
+</script>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+.clearfix:after {
+content: ".";
+display: block;
+height: 0;
+font-size: 0;
+clear: both;
+visibility: hidden;
+}
+  
+.clearfix {
+zoom: 1;
+}
+
+
+
+
+body{
+ 
+}
+
+  .setting{
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: rgb(85, 85, 85);
+    padding-left: 15px;
+    border-bottom: 1px solid rgb(230, 234, 243);
+  }
+  .content{
+
+  }
+  .contentTop{
+    padding: 60px 0px 0px 20px;
+    position: relative;
+  }
+  .contentTop div {
+    padding-left: 40px;
+    padding-bottom: 20px;
+    border-bottom:  1px dashed #e0e0e0;
+  }
+  .contentTop span{
+    font-size: 14px;
+    font-weight: bold;
+    color:#444;
+  }
+  .contentTop input{
+    width: 534px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background: #f8f8f8;
+    color:#333;
+    font-size: 14px;
+  }
+  .contentTop .videoName{
+    width: 534px;
+    border: 1px solid #6ab7fa;
+    padding:0;
+    margin: 0;
+    padding-bottom: 10px;
+    background: #f3f5f8;
+    box-shadow: 0px 0px 6px 0px rgba(102,175,233,0.6);
+    position: absolute;
+    top: 94px;
+    left: 134px;
+    display: none;
+  }
+  
+  .contentTop .videoName ul{
+    margin: 0;
+    padding:0;
+  }
+  .contentTop .videoName li{
+    height: 30px;
+    line-height: 30px;
+    list-style: none;
+    float: left;
+    margin:10px 0 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+   .videoName li:hover{
+    border-color: #66a5ff;
+    color:#111; 
+  }
+  .contentTop .videoName .select{
+      background: #66a5ff;
+      color:#fff;
+      border-color: #66a5ff
+  }
+ 
+  .contentCenter{
+    padding-top: 20px;
+    padding-left:60px;
+  }
+  .contentCenter .scope{
+    font-size: 14px;
+    font-weight: bold;
+    color:#444;
+    float:left;
+  }
+  
+  .contentCenter .broadcasting{
+    width: 164px;
+    height: 406px;
+    background: #f7f7f7;
+    margin-left: 10px;
+    float: left;
+    overflow: auto;
+    padding: 11px 11px 0px 11px;
+  }
+  .broadcasting li {
+    height: 30px;
+    background: #fff;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #333;
+    line-height: 31px;
+    padding-left: 10px;
+  }
+  .broadcasting li:hover{
+    border-color: #66a5ff;
+    color:#111;
+  }
+  .contentCenter .broadcasting .select{
+      background: #66a5ff;
+      color:#fff;
+      border-color: #66a5ff
+  }
+   .contentCenter .broadcasting .portionSelect{
+    background: blue;
+      color:#fff;
+      border-color: #66a5ff
+  }
+  .broadcasting .itemAll{
+    
+  }
+  .broadcasting .itemAll span{
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-top: 6px;
+    background: url(../img/campusRadio.png) 461px 159px;
+    margin-right: 5px;
+  }
+  .broadcasting .itemAll p{
+    margin:0;
+    padding: 0;
+    float: left;
+  }
+  .broadcasting .item{
+
+  }
+  .contentCenter .table{
+    width: 560px;
+    height: 406px;
+    margin-left:20px;
+    float:left;
+    overflow: auto;
+    margin-top: 16px;
+  }
+  .contentCenter table{
+  }
+
+  .contentCenter table tr{
+    height: 36px;
+  }
+  .contentCenter table th{
+    height: 36px;
+    width: 120px;
+    background:#e0e0e0;
+    font-size:14px;
+    font-weight:bold;
+    color:#333;
+    padding-left:22px;
+   }
+   .state span {
+    display: block;
+    width: 30px;
+    height: 30px;
+   }
+
+   .contentCenter table .onLine {
+    float: left;
+    background:url(../img/campusRadio.png) 161px 65px;
+   }
+   .contentCenter table .offLine {
+    float: left;
+
+    background:url(../img/campusRadio.png) 261px 65px;
+   }
+   .contentCenter table .Listen {
+    float: left;
+
+    background:url(../img/campusRadio.png) 61px 65px;
+   }
+
+   .contentCenter table td{
+    height: 36px;
+    width: 120px;
+    font-size:14px;
+    color:#555;
+    padding-left:22px;
+   }
+
+   td,th{
+    height: 36px;
+    margin:1px;
+    line-height: 36px;
+    text-align: start;
+    }
+
+    .first span{
+      display: block;
+    width: 20px;
+    height: 20px;
+    background:url(../img/campusRadio.png) 461px 159px;
+    }
+    .first .allIcon {
+       background:url(../img/campusRadio.png) 261px 159px;
+    }
+    .first .clickIcon{
+      background:url(../img/campusRadio.png) 58px 159px;
+    }
+   .contentCenter table tr:nth-child(odd){
+    background:#f5f5f5
+   }
+   .contentCenter table tr:nth-child(even){
+    background:#f0f0f0
+    
+   }
+  .contentCenter table .first{
+    width: 58px;
+  }
+  .contentCenter table .name{
+    width: 262px;
+  }
+  .onClick{
+    background: url(../img/campusRadio.png) 361px 159px !important;
+  }
+
+
+</style>
+
+<body>
+
+ <div class="myBody">
+   <div class="bodybox">
+      <p class="setting">广播设置</p>
+    <div class="content">
+      <div class="contentTop">
+        <div>
+          <span>广播源选择</span>
+          <input type="text">
+          <div class="videoName clearfix">
+            <ul class="clearfix">
+              <li class="select">广播源名称</li>
+              <li>广播源名称</li>
+              <li>广播源名称</li>
+              <li>广播源名称</li>
+              <li>广播源名称</li>
+              <li>广播源名称</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="contentCenter clearfix">
+        <span class="scope">选择广播范围</span>
+        <ul class="broadcasting">
+          <li class="itemAll"><span></span><p>全选</p></li>
+          <li class="item" sequence='1'>广播组一</li>
+          <li class="item " sequence='1/2'>广播组一</li>
+          <li class="item" sequence='0/2/1'>广播组一</li>
+          <li class="item" sequence='3/4/5'>广播组一</li>
+          <li class="item" sequence='0/2/5'>广播组一</li>
+        </ul>
+        <div class="table">
+          <table>
+          <thead>
+            <tr>
+              <th class="first"><span class="allIcon"></span></th>
+              <th>设备ID</th>
+              <th class="name">设备名称</th>
+              <th>当前状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr sequence='0'>
+              <td class="first"><span class="sonIcon"></span></td>
+              <td>0000001</td>
+              <td class="name">HTC-45612-CL</td>
+              <td class="state"><span class="onLine"></span>在线</td>
+            </tr>
+            <tr sequence='1'>
+              <td class="first"><span class="sonIcon"></span></td>
+              <td>0000001</td>
+              <td class="name">HTC-45612-CL</td>
+              <td class="state"><span class="offLine"></span></td>
+            </tr> 
+            <tr sequence='2'>
+              <td class="first"><span class="sonIcon"></span></td>
+              <td>0000001</td>
+              <td class="name">HTC-45612-CL</td>
+              <td class="state"><span class="offLine"></span>离线</td>
+            </tr> 
+            <tr sequence='3'>
+              <td class="first"><span class="sonIcon"></span></td>
+              <td>0000001</td>
+              <td class="name">HTC-45612-CL</td>
+              <td class="state"><span class="Listen"></span>收听中</td>
+            </tr> 
+            <tr sequence='4'>
+              <td class="first"><span class="sonIcon"></span></td>
+              <td>0000001</td>
+              <td class="name">HTC-45612-CL</td>
+              <td class="state"></td>
+            </tr> 
+            <tr sequence='5'>
+              <td class="first"><span class="sonIcon"></span></td>
+              <td>0000001</td>
+              <td class="name">HTC-45612-CL</td>
+              <td class="state"></td>
+            </tr> 
+
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="contentButtom"></div>
+    </div>
+   </div>
+  </div>
+
+
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src='js.js'></script>
+<script>
+  $('.allIcon').on('click',function(){//设备全选按钮
+    if($(this).hasClass('onClick')){
+      $(this).removeClass('onClick')
+      removeAll(this)//取消全选
+    }else{
+      $(this).addClass('onClick')
+      clickAll(this)//触发全选
+    }
+  })
+  $('.sonIcon').on('click',function(){//单个设备设备按钮
+    var id = $(this).parents('tr').attr('sequence')
+    if($(this).hasClass('onClick')){
+      $(this).removeClass('onClick')
+      whetherClickAll(this)//判断全选按钮是否需要选中
+      var arr = getHaveThisItem(id)//获取拥有该设备的设备组
+      whetherItemClickAll(arr)
+    }else{
+      $(this).addClass('onClick')
+      whetherClickAll(this)//判断全选按钮是否需要选中
+      var arr = getHaveThisItem(id)//获取拥有该设备的设备组
+      whetherItemClickAll(arr)//判断拥有该设备的设备组的状态
+    }
+  })
+  $('.item').on('click',function(){//单个设备组按钮
+    if($(this).hasClass('select')){
+      $(this).removeClass('select')
+      var num = getAll($(this))//获取当前设备组所绑定的数据(返回一个数组)
+      itemUnClick(num)//取消当前设备组选中
+    }else{
+      $(this).addClass('select')
+      var num = getAll($(this))//获取当前设备组所绑定的数据(返回一个数组)
+      itemClickAll(num)//当前设备组选中
+    }
+  })
+  $('.itemAll span').on('click',function(){//设备全选按钮
+    if($(this).hasClass('onClick')){
+      $(this).removeClass('onClick')
+      removeAllItem()
+      var itemArr = getItemAllEquipment()//获取设备组所有的设备
+      var equipmentArr = unArray(itemArr)//去除重复的设备
+      selectvarEquipmentArr(equipmentArr,false)//改变设备状态
+    }else{
+      $(this).addClass('onClick')
+      clickAllItem()
+      var itemArr = getItemAllEquipment()//获取设备组所有的设备
+      var equipmentArr =  unArray(itemArr)//去除重复的设备
+      selectvarEquipmentArr(equipmentArr,true)//改变设备状态
+    }
+  })
+  $('.contentTop input').focus(function(){//输入框获取焦点时显示广播源名称
+    $('.videoName').css('display','block')
+    
+  })
+  $('.contentTop input').blur(function(){//输入框失去焦点时隐藏广播源名称
+    $('.videoName').css('display','none')
+  })
+</script>

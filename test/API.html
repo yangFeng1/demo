@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+  $.post('http://music.163.com/api/search/get/',{
+      s:'在人间',
+      limit:20
+  },function(data){
+    console.log(data)
+  })
+</script>

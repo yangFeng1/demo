@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  $.ajax({
+          url: amdApi.url + "users/password_change",
+          type: "post",
+          data: JSON.stringify(json),
+          success: function(res) {
+                console.log(res)
+                if (res.code == '10107') {
+                $('.passCorrate').hide();
+                $('.passError').show();
+                } else if (res.code != 0) {
+                $('.passError').hide();
+                $('.passCorrate').show();
+                } else {
+                alert(res.msg);
+                }
+          }
+      })
+</script>

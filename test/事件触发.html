@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+  .father{
+    width: 200px;
+    height: 400px;
+    margin: 100px auto;
+  }
+  .sonOne{
+    width: 200px;
+    height: 200px;
+    background: red
+  }
+  .sonTow{
+    width: 200px;
+    height: 200px;
+    background: blue
+  }
+</style>
+<body>
+    <div class="father">
+      <div class="sonOne"></div>
+      <div class="sonTow"></div>
+    </div>
+</body> 
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+    $('.father').on('click',function(e){
+      console.log(e)
+    })
+</script>

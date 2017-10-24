@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>课程表</title>
+<style type="text/css">
+*{margin:0;padding:0;background:#ffffff;}
+table{
+margin:10px;
+width:600px;
+height:400px;
+border-left:1px solid #666666;
+border-bottom:1px double #666666;
+}
+select{
+  border:1px solid #CCC;
+  width: 90px;
+  height: 30px;
+  margin-top: 3px;
+  border-radius: 5px;
+}
+input{
+  border:1px solid #CCC;
+  width: 90px;
+  height: 30px;
+  margin-top: 3px;
+  border-radius: 5px;
+}
+caption{
+border-right:1px solid #666;
+border-top:1px solid #666;
+border-left:1px solid #666;
+padding: 10px 0 10px 0;
+background-color:#F5F5F5;
+}
+thead tr th{
+padding: 10px 0 10px 0;
+background-color:#90EE90;
+border-bottom:1px double #000080;
+}
+tbody tr{
+text-align:center;
+
+}
+tfoot tr td{
+padding: 10px 0 10px 5px;
+background-color:#2E8B57;
+color:#ffffff;
+}
+th,td{
+border-right:1px solid #666;
+border-top:1px solid #666;
+}
+.firstcol{
+background-color:#F5F5F5;
+}
+.topline2px td{
+border-top:2px double #2F4F4F;
+}
+.weekend{
+background-color:#FFB6C1;
+}
+input{
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<button > send </button>
+
+
+
+
+
+
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+for(var i = 1; i < 7; i++){
+    var trHtml = '<tr></tr> '
+    var tdHtml = '<td class="firstcol">第一节</td>'
+
+  for(var j = 0; j < 7;j++){
+     tdHtml += ' <td class="courseInfo">'+
+                      '<select class="course">'+
+                        '<option value="语文">语文</option>'+
+                        '<option value="数学">数学</option>'+
+                        '<option value="英语">英语</option>'+
+                        '<option value="地理">地理</option>'+
+                        '<option value="生物">生物</option>'+
+                        '<option value="历史">历史</option>'+
+                        '<option value="体育">体育</option>'+
+                      '</select><select class="teacher">'+
+                        '<option value="小彩">小彩</option>'+
+                        '<option value="小红">小红</option>'+
+                        '<option value="小黄">小黄</option>'+
+                        '<option value="小绿">小绿</option>'+
+                        '<option value="小蓝">小蓝</option>'+
+                      '</select>'+
+                    '</td>'
+  }
+ var trHtml = '<tr>'+tdHtml+'</tr> '
+ $('table tbody').append(trHtml)
+}
+$('button').on('click',function(){
+  var data = '';
+    $.each($('.courseInfo'),function(i,v){
+   var info = {};
+   var week = (i+1)%7;
+   if(week == 0) week = 7
+   info['class'] = '11';
+   info['curriculum'] = $(v).find('.course').val();
+   info['teacher'] = $(v).find('.teacher').val();
+   info['timeId'] = $(v).siblings('.firstcol').html();
+   info['week'] = week
+   if(i == 0){
+      info = JSON.stringify(info)
+   }else{
+      info =','+JSON.stringify(info)
+   }
+    
+   
+   data += info
+
+  });
+  
+      var aaa = '{"curriculum:['+data+']"}'
+  console.log(data)
+})
+
+
+</script>
+
+
+  
