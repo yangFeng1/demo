@@ -53,7 +53,6 @@
                 a.activePage = parseInt($(this).attr('page'))
                 callback($(this).attr('page'))
                 init()
-                console.log(a)
             })
             $('.pre,.next').on('click', function() { //上一步or下一步
                 if ($(this).hasClass('disabled')) return

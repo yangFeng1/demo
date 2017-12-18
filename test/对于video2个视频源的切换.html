@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+  video{
+    width: 500px;
+    height: 500px;
+  }
+</style>
+<body>
+  
+  <video id="video" preload="auto" conrtols="true" src=>
+
+  </video>
+  <button id="btn">切换</button>
+</body>
+</html>
+<script>
+  var video1 = "http://119.147.33.243/67714376CCA3281D632B662530/03000801005A050CF3D05E315FA61FF6152547-FC28-E889-35E6-42B7755F5A37.mp4?ccode=0502&duration=62&expire=18000&psid=b96dffc11b8add6eaae0dcb9cd5e3a8d&ups_client_netip=220.231.177.21&ups_ts=1510293418&ups_userid=&utid=r%2F9uElRdowECAdznsRU9scm0&vid=XMzE0NzQ2NTA4OA%3D%3D&vkey=A7a42d353f101485dc24387c35600d535"
+  var video2 = "http://119.147.33.184/67749CB4B1542826FBA800260C/03000A02015A0506C3034808C7A845A7A86C7E-0FD9-F589-A8A8-F4F085505013.mp4?ccode=0502&duration=245&expire=18000&psid=457d3f5869b74900cad5d85b89fe9252&ups_client_netip=220.231.177.21&ups_ts=1510293714&ups_userid=&utid=r%2F9uElRdowECAdznsRU9scm0&vid=XMzE0NzQ3NTI3Mg%3D%3D&vkey=Ae51b9758d74a40beddf86ef3917a812e"
+  var video = document.getElementById('video')
+  var btn = document.getElementById('btn')
+  video.src = video1
+  video.play()
+  btn.onclick = function(){
+    if(video.src == video1){
+      video.src = video2
+    }else{
+video.src = video1
+     
+    }
+    
+  video.play()
+  }
+</script>
+

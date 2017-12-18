@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Demo</title>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+    <style type="text/css">
+        .wrap {
+            width: 540px;
+            height: 260px;
+            position: relative;
+        }
+        
+        .layer_pre {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 240px;
+            background-color: #000;
+        }
+        
+        .layer_next {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 240px;
+            /* background-color: #000;
+            filter: alpha(opacity=0);
+            opacity: 0; */
+        }
+        
+        .test {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 240px;
+            background: red;
+            /* background-color: #000;
+            filter: alpha(opacity=0);
+            opacity: 0; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <img src="http://www.baidu.com/img/bd_logo1.png" />
+        <a class="layer_pre" id="J_pre" href="javascript:;"></a>
+        <a class="layer_next" id="J_next" href="javascript:;"></a>
+        <a class="test" href="javascript:;"></a>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#J_pre').click(function() {
+            alert('pre');
+        });
+
+        $('#J_next').click(function() {
+            alert('next');
+        });
+        // $('.test').click(function() {
+        //     alert('test')
+        // })
+        var test = document.getElementsByClassName('test')[0]
+        console.log(test)
+        test.onclick = function() {
+            console.log(55555)
+        }
+    });
+</script>
+
+</html>

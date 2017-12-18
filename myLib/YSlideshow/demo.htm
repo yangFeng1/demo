@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .YSlideshowTest {
+            width: 700px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 200px auto;
+            overflow: hidden;
+        }
+        
+        .clearfix:after {
+            content: " ";
+            display: block;
+            clear: both;
+            height: 0;
+        }
+        
+        .clearfix {
+            zoom: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="YSlideshowContainer">
+        <ul class="YSlideshowContent clearfix">
+            <li class="YSlideshowItem"><img src="http://img1.imgtn.bdimg.com/it/u=594559231,2167829292&fm=27&gp=0.jpg" alt=""></li>
+            <li class="YSlideshowItem"><img src="http://pic4.nipic.com/20091217/3885730_124701000519_2.jpg" alt=""></li>
+            <li class="YSlideshowItem"><img src="http://pic.58pic.com/58pic/13/74/51/99d58PIC6vm_1024.jpg" alt=""></li>
+            <li class="YSlideshowItem"><img src="http://www.taopic.com/uploads/allimg/140107/234764-14010F0310582.jpg" alt=""></li>
+            <li class="YSlideshowItem"><img src="http://img3.redocn.com/tupian/20150430/mantenghuawenmodianshiliangbeijing_3924704.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="js/YSlideshow.js"></script>
+<script>
+</script>

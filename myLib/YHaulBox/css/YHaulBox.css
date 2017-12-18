@@ -1,0 +1,84 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.content {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+}
+
+.aaa {
+    position: absolute;
+    top: 0px;
+    left: 200px;
+    z-index: 888;
+    background: red
+}
+
+.bbb {
+    position: absolute;
+    top: 0px;
+    left: 500px;
+    z-index: 888;
+    background: red
+}
+
+.ccc {
+    position: absolute;
+    top: 0px;
+    left: 800px;
+    z-index: 888;
+    background: red
+}
+
+.boxOne {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    z-index: 777;
+}
+
+.boxTow {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    position: absolute;
+    top: 400px;
+    left: 500px;
+    z-index: 777;
+}
+
+.boxThree {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    position: absolute;
+    top: 400px;
+    left: 700px;
+    z-index: 777;
+}
+
+.boxFour {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    position: absolute;
+    top: 400px;
+    left: 900px;
+    z-index: 777;
+}
+
+.boxFiv {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    position: absolute;
+    top: 400px;
+    left: 1100px;
+    z-index: 777;
+}
