@@ -13,6 +13,8 @@
     <div class='YPagination'>
 
     </div>
+    <div class="aaa">
+           </div>
 </body>
 
 </html>
@@ -20,7 +22,18 @@
 <script src="js/YPagination.js"></script>
 <script>
     $('.YPagination').YPagination({
-        total: 20
+        total: 20,
+        beyondPage:function(){
+            console.log('不要在点了')
+        }
+    }, function(index) {
+        console.log(index)
+    })
+    $('.aaa').YPagination({
+        total: 20,
+        beyondPage:function(){
+            console.log('不要在点了')
+        }
     }, function(index) {
         console.log(index)
     })

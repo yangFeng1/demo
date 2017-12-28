@@ -36,7 +36,7 @@
     margin: 0;
 }
 
-li {
+.Ypage {
     list-style: none;
     float: left;
     width: 28px;
@@ -55,25 +55,24 @@ a {
     text-decoration: none;
 }
 
-.YPagination {
-    margin: 200px 500px;
-}
+
 
 .pageIndex {
     height: 26px;
     width: 30px;
 }
 
-.active {
+.YActive {
     background: linear-gradient(to bottom, #76adfe, #438bfb);
     cursor: default;
     border: 1px solid #96c0f9;
     color: #fff;
 }
 
-.input {
+.YpageInp {
     background: rgba(0, 0, 0, 0);
     border: none;
+    text-align: center
 }
 
 .disabled {
